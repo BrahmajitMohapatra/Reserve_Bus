@@ -8,7 +8,7 @@ import CustomerReviews from "../components/HomePage/CustomerReviews"
 function Home() {
   return (
     <div>
-        <Navbar/>
+        <Navbar />
       <Traveling/>
       <Achievments/>
       <CustomerReviews/>

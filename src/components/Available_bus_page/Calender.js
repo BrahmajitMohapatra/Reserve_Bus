@@ -1,8 +1,11 @@
 import React from 'react'
+import DatePicker from "react-datepicker";
 
 function Calender() {
   return (
-    <div className='my-8 h-10 w-14 bg-black'>calender</div>
+    <div className='my-8 '>
+       <DatePicker labelFormat={"MMM"} color={"#03001C"} />
+    </div>
   )
 }
 
