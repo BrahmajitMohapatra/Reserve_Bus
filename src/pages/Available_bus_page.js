@@ -6,7 +6,7 @@ import InfoandCalender from '../components/Available_bus_page/InfoandCalender'
 function Available_bus_page() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className='flex'>
       <FilterSection/>
      <InfoandCalender/>

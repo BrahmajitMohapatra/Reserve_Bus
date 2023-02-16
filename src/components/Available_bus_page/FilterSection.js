@@ -4,12 +4,12 @@ import BusInfo from "./BusInfo";
 function FilterSection() {
   return (
     <div>
-      <div>
+      <div >
         <ul className="flex space-x-16 border-solid border-2 w-52 rounded-lg  mx-6 my-8">
           <li className="mx-3 my-1">Filter</li>
           <li className="my-1">Clear all</li>
         </ul>
-        <div className=" border-solid border-2 w-52 rounded-lg h-auto mx-6 my-8">
+        <div className=" border-solid border-2 w-52 rounded-lg h-auto mx-6 my-8 px-1">
           <h1>Departure</h1>
           <form>
             <input type="checkbox" name="morning" value="morning" />

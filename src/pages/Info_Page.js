@@ -7,7 +7,7 @@ import Additional_details from '../components/Info_Page/Additional_details'
 function Info_Page() {
   return (
     <div>
-        <Navbar/>
+        <Navbar />
         <Additional_details/>
         <Footer/>
     </div>

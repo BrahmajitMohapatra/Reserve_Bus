@@ -7,7 +7,7 @@ function Payment() {
   return (
     <div>
         <Navbar/>
-      <PaymentDetails/>
+      <PaymentDetails />
         <Footer/>
         </div>
   )
