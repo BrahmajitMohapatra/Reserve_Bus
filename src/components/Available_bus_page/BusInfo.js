@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ViewSeats from "./ViewSeats";
+import data from  "../../Data.json"
 
 function BusInfo() {
   //for displaying and hidding the seats component
@@ -8,12 +9,27 @@ function BusInfo() {
     <div className="drop-shadow-lg">
       <div className="flex  mx-4 -my-1 space-x-96 border-stone-300 border-2 rounded-lg py-2 px-9 ">
         <div>
-          <ul>
-            <li className="text-lg font-semibold">Intrcity <span className="mx-2">&#9733;</span>4.5 Rating</li>
+          {
+            data.map((data)=>{
+              return (
+                <div>
+                  {data.BusDetails.map((bus)=>{
+                    return(
+                      <div>
+                          <ul>
+            <li className="text-lg font-semibold">{bus.name} <span className="mx-2">&#9733;</span>{bus.rating}</li>
             <li className="font-light">A/C Sleeper 2+3 | 2 Seats Left | 1 Window Left</li>
             <li className="my-1">22:45 ,16 Jan - 07hrs 50min - 06:20, 17 Jan</li>
           </ul><br/>
-          <div className="flex gap-3 my-1 text-blue-400">
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })
+          }
+          
+          <div className="flex gap-2 my-1 text-blue-400">
             <p>Live tracking</p>
             <p>policies</p>
             <p>photos</p>

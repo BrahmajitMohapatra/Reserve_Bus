@@ -9,7 +9,6 @@ function InfoandFilter() {
         <BusInfo/><br/>
         <BusInfo/><br/>
         <BusInfo/><br/>
-        <BusInfo/><br/>
         <BusInfo/>
     </div>
   )

@@ -4,14 +4,14 @@ import BusInfo from "./BusInfo";
 function FilterSection() {
   return (
     <div>
-      <div >
-        <ul className="flex space-x-16 border-solid border-2 w-52 rounded-lg  mx-6 my-8">
-          <li className="mx-3 my-1">Filter</li>
-          <li className="my-1">Clear all</li>
-        </ul>
-        <div className=" border-solid border-2 w-52 rounded-lg h-auto mx-6 my-8 px-1">
-          <h1>Departure</h1>
-          <form>
+      <div>
+        <form>
+          <ul className="flex space-x-16 border-solid border-2 w-52 rounded-lg mx-7 my-4">
+            <li className="mx-3 my-1">Filter</li>
+            <input type="reset" value="Clear" name=""/>
+          </ul>
+          <div className=" border-solid border-2 w-52 rounded-lg h-auto mx-7 my-5 px-1">
+            <h1>Departure</h1>
             <input type="checkbox" name="morning" value="morning" />
             <label for="Morning"> Morning Session</label>
             <br />
@@ -23,9 +23,7 @@ function FilterSection() {
             <br />
             <br />
             <hr />
-          </form>
-          <h1>Arrival</h1>
-          <form>
+            <h1>Arrival</h1>
             <input type="checkbox" name="morning" value="morning" />
             <label for="Morning"> Morning Session</label>
             <br />
@@ -37,42 +35,31 @@ function FilterSection() {
             <br />
             <br />
             <hr />
-          </form>
-          <h1>Pick point</h1>
-          <form>
-            <input type="radio"  name="city" value="Hyderabad" /> 
+            <h1>Pick point</h1>
+            <input type="radio" name="city" value="Hyderabad" /> 
             <label for="Hyderabad">Hyderabad</label>
             <br />
             <input type="radio" id="css" name="city" value="Chennai" /> 
             <label for="Chennai">Chennai</label>
             <br />
-            <input
-              type="radio"
-              name="city"
-              value="Delhi"
-            />
+            <input type="radio" name="city" value="Delhi" />
             <label for="Delhi">Delhi</label>
-          </form>
-          <br/>
-          <hr/>
-          <h1>Drop point</h1>
-          <form>
-            <input type="radio"  name="city" value="Hyderabad" />
+            <br />
+            <br />
+            <hr />
+            <h1>Drop point</h1>
+            <input type="radio" name="city" value="Hyderabad" />
             <label for="Hyderabad">Hyderabad</label>
             <br />
             <input type="radio" id="css" name="city" value="Chennai" />
             <label for="Chennai">Chennai</label>
             <br />
-            <input
-              type="radio"
-              name="city"
-              value="Delhi"
-            />
-             <label for="Delhi">Delhi</label>
-          </form>
-          <br/><hr/>
-          <h1>Bus rating</h1>
-          <form>
+            <input type="radio" name="city" value="Delhi" />
+            <label for="Delhi">Delhi</label>
+            <br />
+            <br />
+            <hr />
+            <h1>Bus rating</h1>
             <input type="checkbox" name="morning" value="morning" />
             <label for="Morning"> 4 star &more</label>
             <br />
@@ -82,11 +69,9 @@ function FilterSection() {
             <input type="checkbox" name="Evening" value="Evening" />
             <label for="Evening"> 0-2star</label>
             <br />
-            <br/>
+            <br />
             <hr />
-          </form>
-          <h1>Bus Operator</h1>
-          <form>
+            <h1>Bus Operator</h1>
             <input type="checkbox" name="morning" value="morning" />
             <label for="Morning"> Zing bus</label>
             <br />
@@ -98,8 +83,8 @@ function FilterSection() {
             <br />
             <br />
             <hr />
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );

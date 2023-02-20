@@ -1,6 +1,6 @@
 .main-container{
     background-image: url("../../Images/display_picc.avif");
-    height:500px;
+    height:100vh;
     background-size: cover;
 }
 .btn{
@@ -20,5 +20,5 @@
 .button{
   display:block;
   margin:auto;
-  width: 100px;
+  width: 150px;
 }

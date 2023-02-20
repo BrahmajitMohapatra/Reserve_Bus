@@ -151,7 +151,7 @@ function ViewSeats() {
           <div className="border-gray-500 border-2 w-96 h-28">
             <div className="flex space-x-4 mx-8">
               <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat22"]}`}
+                className={`w-14 h-6 rounded-sm ${seatColor["seat22"]} `}
                 id="seat22"
                 onClick={handleClick}
               />
