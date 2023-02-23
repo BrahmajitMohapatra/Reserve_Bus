@@ -1,14 +1,12 @@
 import React from 'react'
 import BusInfo from './BusInfo'
-import Calender from './Calender'
+import DayCalendar from './DayCalendar'
+
 
 function InfoandFilter() {
   return (
     <div>
-        <Calender/>
-        <BusInfo/><br/>
-        <BusInfo/><br/>
-        <BusInfo/><br/>
+        <DayCalendar/><br/>
         <BusInfo/>
     </div>
   )
