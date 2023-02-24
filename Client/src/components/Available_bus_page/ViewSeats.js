@@ -1,324 +1,415 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineStar } from "react-icons/ai"
+import Seat from "./Seat.js"
 import data from "../../Data.json";
-import { BiCheckbox } from "react-icons/bi";
-function ViewSeats() {
-  //change seat color on selection
+function ViewSeats(props) {
   const [seatColor, setSeatColor] = useState("bg-white");
-  const handleClick = (event) => {
-    const target = event.target;
-    const currentColor = seatColor[target.id];
-    if (currentColor === "bg-white") {
-      setSeatColor({ ...seatColor, [target.id]: "" });
-    } else {
-      setSeatColor({ ...seatColor, [target.id]: "bg-white" });
-    }
+  const priceRanges = ["All", "699", "899", "1199", "1599"];
+  const seats = ["Vacant", "Reserved", "Selected"];
+  const [filterPrice, setFilterPrice] = useState("");
+  const [selectedSeat, setSelectedSeat] = useState("");
+  const [filteredSeats, setFilteredSeats] = useState(
+    Array.from({ length: 38 }, (_, index) => String(index + 1).padStart(2, "0"))
+  );
+
+  const pricesToSeats = {
+    699: ["08", "09", "10", "11", "12", "13", "14"],
+    899: ["02", "06", "08", "13", "12", "20", "25", "28", "32", "37"],
+    1199: [
+      "03",
+      "06",
+      "09",
+      "12",
+      "15",
+      "17",
+      "21",
+      "24",
+      "27",
+      "29",
+      "33",
+      "36",
+    ],
+    1599: ["15", "17", "16", "18", "19", "34", "35", "36", "37", "38"],
   };
+  const setFilter = (event) => {
+    const price = event.target.value;
+    setFilteredSeats(pricesToSeats[price] || []);
+  };
+
   return (
-    <div className="mx-6">
-      <p>Select Seats</p>
-      <form className="my-4">
-        <label>Seat price</label>
-        <input type="radio" name="price" value="" className="mx-4" />
-        <label for="price">All</label>
-        <input type="radio" name="price" value="" className="mx-4" />
-        <label for="price">899</label>
-        <input type="radio" name="price" value="" className="mx-4" />
-        <label for="price">1200</label>
-        <input type="radio" name="price" value="" className="mx-4" />
-        <label for="price">2000</label>
-      </form>
-      <div className="flex space-x-24">
-        <div>
-          <div className="border-gray-500 border-2 w-96 h-28 bg-neutral-400 rounded-lg">
-            <div className="flex space-x-4 mx-8">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat1"]} `}
-                id="seat1"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat2"]}`}
-                id="seat2"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat44"]}`}
-                id="seat44"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat3"]}`}
-                id="seat3"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat4"]}`}
-                id="seat4"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat5"]}`}
-                id="seat5"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat6"]}`}
-                id="seat6"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat7"]}`}
-                id="seat7"
-                onClick={handleClick}
-              />
-            </div>
-            <div className="flex space-x-4 mx-8">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat8"]}`}
-                id="seat8"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat9"]}`}
-                id="seat9"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat10"]}`}
-                id="seat10"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat11"]}`}
-                id="seat11"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat12"]}`}
-                id="seat12"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat13"]}`}
-                id="seat13"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat14"]}`}
-                id="seat14"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat15"]}`}
-                id="seat15"
-                onClick={handleClick}
-              />
-            </div>
-            <div className="flex space-x-4 mx-20 my-9 ">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat16"]}`}
-                id="seat16"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat17"]}`}
-                id="seat17"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat18"]}`}
-                id="seat18"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat19"]}`}
-                id="seat19"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat20"]}`}
-                id="seat20"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat21"]}`}
-                id="seat21"
-                onClick={handleClick}
-              />
-            </div>
-          </div>
-          <br />
-          <div className="border-gray-500 border-2 w-96 h-28 bg-neutral-400 rounded-lg">
-            <div className="flex space-x-4 mx-8">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat22"]} `}
-                id="seat22"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat23"]}`}
-                id="seat23"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat24"]}`}
-                id="seat24"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat25"]}`}
-                id="seat25"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat26"]}`}
-                id="seat26"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat27"]}`}
-                id="seat27"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat28"]}`}
-                id="seat28"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat29"]}`}
-                id="seat29"
-                onClick={handleClick}
-              />
-            </div>
-            <div className="flex space-x-4 mx-8 ">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat30"]}`}
-                id="seat30"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat31"]}`}
-                id="seat31"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat32"]}`}
-                id="seat32"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat33"]}`}
-                id="seat33"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat34"]}`}
-                id="seat34"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat35"]}`}
-                id="seat35"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat36"]}`}
-                id="seat36"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat37"]}`}
-                id="seat37"
-                onClick={handleClick}
-              />
-            </div>
-            <div className="flex space-x-4 mx-20 my-9 ">
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat38"]}`}
-                id="seat38"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat39"]}`}
-                id="seat39"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat40"]}`}
-                id="seat40"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat41"]}`}
-                id="seat41"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat42"]}`}
-                id="seat42"
-                onClick={handleClick}
-              />
-              <BiCheckbox
-                className={`w-14 h-6 rounded-sm ${seatColor["seat43"]}`}
-                id="seat43"
-                onClick={handleClick}
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="border-gray-500 border-2 h-auto w-auto px-2 rounded-lg">
-            <p className="font-semibold text-lg">Boarding and dropping</p>
-            {data && data.map((data) => {
-              return (
-                <div>
-                  {data.BusDetails && data.BusDetails.map((fares) => {
-                    return (
-                      <div className="flex space-x-12 ">
-                        <div className="font-semibold my-2">
-                          <p>{fares.arrLocation}</p>
-                          <p className="font-extralight text-sm">
-                            {fares.arrPoint}
-                          </p>
-                          <p>{fares.depLocation}</p>
-                          <p className="font-extralight text-sm">
-                            {fares.depPoint}
-                          </p>
-                          <br />
-                          <hr />
-                          <p>Seat No.</p>
-                          <hr />
-                          <p>Fare details</p>
-                          <p className="font-extralight text-sm">
-                            amount with tax
-                          </p>
-                        </div>
-                        <div className="my-2 ">
-                          <p>{fares.depTime}</p>
-                          <br></br>
-                          <p>{fares.arrTime}</p>
-                          <br />
-                          <br />
-                          <p className="-my-2">7</p>
-                          <br />
-                          <p>INR 750</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                        <Link to="/infoPage">
-                          <button className="text-center bg-red-400 mx-7 my-2 px-2 py-1 font-medium  rounded-md">
-                            Proceed to Book
-                          </button>
-                        </Link>
+    <div className="mb-4 ">
+      {props.showBus === props.busNo && (
+        <div className="border-2 border-gray-200 mx-4 rounded-md ">
+          <div className="m-2 flex">
+            <div className="basis-4/5 text-start">
+              <div className="font-bold text-2xl ">Select Seats</div>
+              <div className="flex my-4">
+                <div className="text-gray-400">Seat Price</div>
+                <div className="border-2 border-gray-300 mr-2 ml-4 px-2 text-gray-400 rounded-md">
+                  <input
+                    className="mr-2 leading-tight"
+                    name="price"
+                    type="radio"
+                    value="All"
+                    defaultChecked={true}
+                    onClick={setFilter}
+                  />
+                  <label className="text-sm ">₹All</label>
                 </div>
-              );
-            })}
+                <div className="border-2 border-gray-300 mr-2 ml-4 px-2 text-gray-400 rounded-md">
+                  <input
+                    className="mr-2 leading-tight"
+                    name="price"
+                    type="radio"
+                    value="699"
+                    onClick={setFilter}
+                  />
+                  <label className="text-sm ">₹699</label>
+                </div>
+                <div className="border-2 border-gray-300 mr-2 ml-4 px-2 text-gray-400 rounded-md">
+                  <input
+                    className="mr-2 leading-tight"
+                    name="price"
+                    type="radio"
+                    value="899"
+                    onClick={setFilter}
+                  />
+                  <label className="text-sm ">₹899</label>
+                </div>
+                <div className="border-2 border-gray-300 mr-2 ml-4 px-2 text-gray-400 rounded-md">
+                  <input
+                    className="mr-2 leading-tight"
+                    name="price"
+                    type="radio"
+                    value="1199"
+                    onClick={setFilter}
+                  />
+                  <label className="text-sm ">₹1199</label>
+                </div>
+                <div className="border-2 border-gray-300 mr-2 ml-4 px-2 text-gray-400 rounded-md">
+                  <input
+                    className="mr-2 leading-tight"
+                    name="price"
+                    type="radio"
+                    value="1599"
+                    onClick={setFilter}
+                  />
+                  <label className="text-sm ">₹1599</label>
+                </div>
+              </div>
+            </div>
+            <div className="basis-1/5 text-start text-gray-600">
+              {seats.map((seat, id) => (
+                <div key={id} className="">
+                  <input className="mr-2 leading-tight" type="checkbox" />
+                  <span className="text-md">{seat} Seats</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex m-2 ">
+            <div className="basis-2/3  mr-2 ">
+              <div className=" border-2 h-[26vh] border-gray-300 mb-4 flex rounded-md">
+                <div
+                  className="rotate-180 text-gray-400 mt-2 text-xs"
+                  style={{ writingMode: "vertical-rl" }}
+                >
+                  <span>Upper Birth</span>
+                </div>
+                <div className="mt-3 pl-12 ml-4">
+                  <div className="flex">
+                    <Seat
+                      seatno="01"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="02"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="03"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="04"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="05"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="06"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="07"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                  <div className="flex mb-12">
+                    <Seat
+                      seatno="08"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="09"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="10"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="11"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="12"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="13"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="14"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                  <div className="flex mb-2 ml-40">
+                    <Seat
+                      seatno="15"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="16"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="17"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="18"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="19"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="border-2 h-[26vh] border-gray-300 flex rounded-md">
+                <div
+                  className="rotate-180 text-gray-400 mt-2 text-xs"
+                  style={{ writingMode: "vertical-rl" }}
+                >
+                  <span>Lower Birth</span>
+                </div>
+                <div className="mt-3 pl-12 ml-4">
+                  <div className="flex mb-2">
+                    <Seat
+                      seatno="20"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="21"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="22"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="23"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="24"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="25"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="26"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                  <div className="flex mb-12">
+                    <Seat
+                      seatno="27"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="28"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="29"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="30"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="31"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="32"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="33"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                  <div className="flex mb-2 ml-40">
+                    <Seat
+                      seatno="34"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="35"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="36"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="37"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                    <Seat
+                      seatno="38"
+                      setSelectedSeat={setSelectedSeat}
+                      filteredSeats={filteredSeats}
+                      setFilterPrice={setFilterPrice}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="basis-1/3 border-2 border-gray-300 rounded-md">
+              <div className="my-2 mx-3 text-start">
+                <div className="font-bold text-xl">Boarding and Dropping</div>
+                <div className="flex justify-between my-2">
+                  <div>
+                    <div className="font-semibold ">-Pune</div>
+                    <div className="text-gray-400">Taxi Service</div>
+                  </div>
+                  <div className="text-sm font-bold">22:45</div>
+                </div>
+                <div className="flex justify-between mt-2 border-b-2 border-gray-300 pb-2 pt-2">
+                  <div>
+                    <div className="font-semibold">-Kolkata</div>
+                    <div className="text-gray-400">Taxi Service</div>
+                  </div>
+                  <div className="text-sm font-bold">06:20</div>
+                </div>
+                <div className="flex justify-between text-xl font-bold border-b-2 border-gray-300 py-1">
+                  <div>Seat No</div>
+                  <div>{selectedSeat}</div>
+                </div>
+                <div className=" text-xl font-bold py-1">Fare Details</div>
+                <div className="flex justify-between my-1">
+                  <div>
+                    <div className="text-xl font-bold">Amount</div>
+                    <div className="text-sm text-gray-400">Taxi Service</div>
+                  </div>
+                  <div className="text-md font-bold">INR {filterPrice}</div>
+                </div>
+                <div>
+                  <button className="bg-orange-500 text-white mt-6 py-2 px-8 w-full rounded-md">
+                    <Link to="/infoPage">Proceed to Book</Link>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

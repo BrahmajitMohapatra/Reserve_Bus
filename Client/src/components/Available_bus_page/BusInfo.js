@@ -8,12 +8,12 @@ function BusInfo() {
   return (
     <div className="drop-shadow-lg">
       {/* <div > */}
-      {data.map((data) => {
+      {data.map((data,id) => {
         return (
-          <div>
-            {data.BusDetails.map((bus) => {
+          <div key={id}>
+            {data.BusDetails.map((bus,id) => {
               return (
-                <div className="flex  mx-4 -my-1 space-x-96 border-stone-300 border-2 rounded-lg py-2 px-9 ">
+                <div key={id} className="flex  mx-4 -my-1 space-x-[250px] border-stone-300 border-2 rounded-lg py-2 px-9 ">
                   <div>
                     <ul>
                       <li className="text-lg font-semibold">

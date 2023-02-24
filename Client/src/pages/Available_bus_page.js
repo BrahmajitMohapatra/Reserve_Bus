@@ -7,7 +7,7 @@ function Available_bus_page() {
   return (
     <div>
       <Navbar />
-      <div className='flex'>
+      <div className='flex '>
       <FilterSection/>
      <InfoandCalender/>
 

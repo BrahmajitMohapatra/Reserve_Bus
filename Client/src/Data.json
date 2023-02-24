@@ -1,21 +1,4 @@
 [{
-  "cities": [
-    "Amaravathi",
-    "Bangalore",
-    "chadigarh",
-    "Chennai",
-    "Delhi",
-    "Gurugram",
-    "Hyderabad",
-    "Jaipur",
-    "kargil",
-    "Kolkata",
-    "Lucknow",
-    "maharastra",
-    "pune",
-    "Surat",
-    "Thiruvanthapuram"
-  ],
   "BusDetails": [
     {
       "name": "InterCity Smart Bus",

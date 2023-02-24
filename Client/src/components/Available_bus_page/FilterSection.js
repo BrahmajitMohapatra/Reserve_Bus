@@ -2,89 +2,88 @@ import React from "react";
 import BusInfo from "./BusInfo";
 
 function FilterSection() {
+   const sessions = ["Morning", "Afternoon", "Evening"];
+  const cities = ["Kolkata", "Mumbai", "Banglore"];
+  const busRatings = ["4 star or more", "3 star or more", "0-2 star"];
+  const busOperators = ["Zing Bus", "Intrcity Smart", "Safar Exp"];
   return (
-    <div>
-      <div>
-        <form>
-          <ul className="flex space-x-16 border-solid border-2 w-52 rounded-lg mx-7 my-4">
-            <li className="mx-3 my-1">Filter</li>
-            <input type="reset" value="Clear" name=""/>
-          </ul>
-          <div className=" border-solid border-2 w-52 rounded-lg h-auto mx-7 my-5 px-1">
-            <h1>Departure</h1>
-            <input type="checkbox" name="morning" value="morning" />
-            <label for="Morning"> Morning Session</label>
-            <br />
-            <input type="checkbox" name="Afternoon" value="Afternoon" />
-            <label for="Afternoon"> Afternoon Session</label>
-            <br />
-            <input type="checkbox" name="Evening" value="Evening" />
-            <label for="Evening"> Evening Session</label>
-            <br />
-            <br />
-            <hr />
-            <h1>Arrival</h1>
-            <input type="checkbox" name="morning" value="morning" />
-            <label for="Morning"> Morning Session</label>
-            <br />
-            <input type="checkbox" name="Afternoon" value="Afternoon" />
-            <label for="Afternoon"> Afternoon Session</label>
-            <br />
-            <input type="checkbox" name="Evening" value="Evening" />
-            <label for="Evening"> Evening Session</label>
-            <br />
-            <br />
-            <hr />
-            <h1>Pick point</h1>
-            <input type="radio" name="city" value="Hyderabad" /> 
-            <label for="Hyderabad">Hyderabad</label>
-            <br />
-            <input type="radio" id="css" name="city" value="Chennai" /> 
-            <label for="Chennai">Chennai</label>
-            <br />
-            <input type="radio" name="city" value="Delhi" />
-            <label for="Delhi">Delhi</label>
-            <br />
-            <br />
-            <hr />
-            <h1>Drop point</h1>
-            <input type="radio" name="city" value="Hyderabad" />
-            <label for="Hyderabad">Hyderabad</label>
-            <br />
-            <input type="radio" id="css" name="city" value="Chennai" />
-            <label for="Chennai">Chennai</label>
-            <br />
-            <input type="radio" name="city" value="Delhi" />
-            <label for="Delhi">Delhi</label>
-            <br />
-            <br />
-            <hr />
-            <h1>Bus rating</h1>
-            <input type="checkbox" name="morning" value="morning" />
-            <label for="Morning"> 4 star &more</label>
-            <br />
-            <input type="checkbox" name="Afternoon" value="Afternoon" />
-            <label for="Afternoon"> 3 star &more</label>
-            <br />
-            <input type="checkbox" name="Evening" value="Evening" />
-            <label for="Evening"> 0-2star</label>
-            <br />
-            <br />
-            <hr />
-            <h1>Bus Operator</h1>
-            <input type="checkbox" name="morning" value="morning" />
-            <label for="Morning"> Zing bus</label>
-            <br />
-            <input type="checkbox" name="Afternoon" value="Afternoon" />
-            <label for="Afternoon"> Intercity smart</label>
-            <br />
-            <input type="checkbox" name="Evening" value="Evening" />
-            <label for="Evening"> Safar exp</label>
-            <br />
-            <br />
-            <hr />
-          </div>
-        </form>
+    <div className="basis-1/4 mt-5 mb-5 mx-8">
+      <div className="flex justify-between border-2 py-3 px-4 font-bold mb-2 rounded-md">
+        <div>Filter</div>
+        <div>Clear All</div>
+      </div>
+      <div className="border-2 rounded-md">
+        <div className=" py-3 px-4 text-start">
+          <div className="py-2 font-bold">Departure Time</div>
+          {sessions.map((session, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2" type="checkbox" />
+                <label htmlFor={`session-${id}`}>{`${session} Session`}</label>
+              </div>
+            );
+          })}
+        </div>
+        <hr />
+        <div className="py-3 px-4 text-start">
+          <div className="py-2 font-bold">Arrival Time</div>
+          {sessions.map((session, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2 " type="checkbox" />
+                <label htmlFor={`session-${id}`}>{`${session} Session`}</label>
+              </div>
+            );
+          })}
+        </div>
+        <hr />
+        <div className="py-3 px-4 text-start">
+          <div className="py-2 font-bold">Pickup Point</div>
+          {cities.map((city, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2 " name="pickup" type="radio" />
+                <div>{city}</div>
+              </div>
+            );
+          })}
+        </div>
+        <hr />
+        <div className="py-3 px-4 text-start">
+          <div className="py-2 font-bold">Drop Point</div>
+          {cities.map((city, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2 " name="drop" type="radio" />
+                <div>{city}</div>
+              </div>
+            );
+          })}
+        </div>{" "}
+        <hr />
+        <div className="py-3 px-4 text-start">
+          <div className="py-2 font-bold">Bus Rating</div>
+          {busRatings.map((rating, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2" type="checkbox" />
+                <div>{rating}</div>
+              </div>
+            );
+          })}
+        </div>
+        <hr />
+        <div className="py-3 px-4 text-start">
+          <div className="py-2 font-bold">Bus Operator</div>
+          {busOperators.map((operator, id) => {
+            return (
+              <div key={id} className="py-2 flex">
+                <input className="mr-2" type="checkbox" />
+                <div>{operator}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

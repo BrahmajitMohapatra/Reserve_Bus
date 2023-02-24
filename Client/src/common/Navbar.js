@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaBus } from "react-icons/fa";
-import logo from "../Images/bus_logo.jpg";
-import customerImage from "../Images/customerImage1.jpg";
+
 function Navbar() {
 
- //
- //
   return (
     <>
       <div className=" -my-1">
@@ -26,9 +23,10 @@ function Navbar() {
             </button>
             <li className="font-semibold text-lg -mx-72">Register</li>
           </div>:
-          <div className="flex ">
-            <div className="ml-10">
-              <p className="font-semibold text-lg mx-80">My profile</p>
+          <div>
+            <div className="ml-[580px] flex space-x-2">
+              <p className="font-bold text-gray-700 rounded-full bg-white flex items-center justify-center font-mono h-[32px] w-[32px] text-xl bg-[orange] ">E</p>
+              <p className="font-semibold text-lg ">My profile</p>
               </div>
             </div>
            }
