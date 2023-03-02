@@ -4,6 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 import BusDisplay from "./pages/BusDisplay";
+import Info from "./pages/Info"
+import Payment from "./pages/Payment"
 
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/bus-display" element={<BusDisplay />} />
+        <Route path="/info" element={<Info />} />
+        <Route path="/info/payment" element={<Payment />} />
       </Routes>
     </div>
   );
